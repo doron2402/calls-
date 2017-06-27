@@ -71,10 +71,8 @@ console.log(`
 `);
 const min = 0;
 const max = 0;
-const responseTime = {
-  success: [],
-  error: []
-};
+const successfulResponseTimes = [];
+const failureResponseTimes = [];
 
 const options = {
   url: URL,
@@ -95,14 +93,13 @@ const callback = (err, response, body) => {
   const end = new Date().getTime();
   const diff = end - start;
   if (!err && response.statusCode == 200) {
-    responseTime.success.push(diff);
+    successfulResponseTimes.push(diff);
     console.log('success');
   } else {
-    responseTime.error.push(diff);
+    failureResponseTimes.push(diff);
     console.log('fail');
   }
   console.log(`Request Took: ${diff}`);
-  start = 0;
 };
 
 setInterval(function() {
@@ -111,14 +108,23 @@ setInterval(function() {
   numberOfCalls--;
   if (numberOfCalls <= 0) {
     console.log('Done.');
-    console.log(`Total Successful calls: ${responseTime.success.length}`);
-    var successfulReponseTimes = responseTime.success.sort();
+    console.log(`Total Successful calls: ${successfulResponseTimes.length}`);
+    var successfulReponseTimes = successfulResponseTimes.sort(function(a,b) { return a-b; });
     console.log(`\n
-      **************** Successful time ****************
+      **************** Successful times ****************
       Min: ${successfulReponseTimes[0]}
       Max: ${successfulReponseTimes[successfulReponseTimes.length-1]}
     `);
-    console.log(`Total UnSuccessful calls: ${responseTime.error.length}`);
+
+    if (failureResponseTimes.length > 0) {
+      console.log(`Total UnSuccessful calls: ${failureResponseTimes.length}`);
+      var times = successfulResponseTimes.sort(function(a,b) { return a-b; });
+      console.log(`
+      **************** Failure times ****************
+      Min: ${times[0]}
+      Max: ${times[times.length-1]}
+      `)
+    }
     return process.exit(0);
   }
 }, INTERVAL*1000)
