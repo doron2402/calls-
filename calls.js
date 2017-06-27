@@ -53,6 +53,13 @@ const parsedArgs = args.reduce((sum, currentVal, currentIndex, arr) => {
     }
   }
 });
+/**
+ * Verify fields
+ */
+if (URL === null) {
+  console.log('URL is missing make sure to pass `-url SOMEURL`');
+  process.exit(1);
+}
 
 console.log(`
   **** Starting... ****
