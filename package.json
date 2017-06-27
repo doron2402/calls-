@@ -1,0 +1,32 @@
+{
+  "name": "calls",
+  "version": "1.0.0",
+  "description": "Simple nodejs package for measuring response time from an end point",
+  "main": "calls.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Doron Segal",
+  "license": "ISC",
+  "dependencies": {
+    "request": "^2.81.0"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/doron2402/calls-.git"
+  },
+  "keywords": [
+    "testing",
+    "api",
+    "measuring",
+    "response",
+    "time",
+    "response",
+    "time"
+  ],
+  "bugs": {
+    "url": "https://github.com/doron2402/calls-/issues"
+  },
+  "homepage": "https://github.com/doron2402/calls-#readme"
+}
