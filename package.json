@@ -1,6 +1,6 @@
 {
   "name": "calls",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Simple nodejs package for measuring response time from an end point",
   "main": "calls.js",
   "bin": "calls.js",
